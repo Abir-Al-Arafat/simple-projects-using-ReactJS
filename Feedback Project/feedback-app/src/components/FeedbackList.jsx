@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import FeedbackItem from './FeedbackItem'
 
@@ -11,6 +12,17 @@ function FeedbackList({feedback}) {
         <FeedbackItem key={item.id} item={item}/>
     )}
   </div>
+}
+
+// setting shape of object inside of the array
+FeedbackList.propTypes = {
+  feedback: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      rating: PropTypes.number.isRequired,
+      text: PropTypes.string
+    })
+  )
 }
 
 export default FeedbackList
