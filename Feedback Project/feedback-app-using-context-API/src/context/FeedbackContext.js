@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 const FeedbackContext = createContext()
 
 export const FeedbackProvider = ({children}) => {
-    const [feedback, setFeedback] = useState([
+    const defaultFeedbacks = [
         {
             id: 1,
             text: '1st review from context',
@@ -20,7 +20,9 @@ export const FeedbackProvider = ({children}) => {
             text: '3rd review from context',
             rating: 7
         },
-    ])
+    ]
+    
+    const [feedback, setFeedback] = useState(defaultFeedbacks)
 
     const [feedbackEdit, setFeedbackEdit] = useState({
         item: {},
