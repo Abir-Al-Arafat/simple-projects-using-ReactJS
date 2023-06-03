@@ -1,5 +1,6 @@
 import { FormEvent, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import { categories } from "../categories";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -16,7 +17,7 @@ const schema = z.object({
 //   age: number;
 // }
 
-const Form = () => {
+const ExpenseForm = () => {
   const {
     register,
     handleSubmit,
@@ -28,7 +29,7 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="mb-3">
+    <form onSubmit={handleSubmit(onSubmit)} className="mb-5">
       <div className="mb-3">
         <label htmlFor="description" className="form-label">
           Description
@@ -60,17 +61,22 @@ const Form = () => {
       </div>
 
       {/* options */}
-      {/* <label htmlFor="inputGroupSelect01" className="form-label">
-        Category
-      </label>
-      <div className="input-group mb-3">
-        <select className="form-select" id="inputGroupSelect01">
-          <option selected></option>
-          <option value="groceries">Groceries</option>
+      <div className="mb-3">
+        <label htmlFor="category" className="form-label">
+          Category
+        </label>
+        <select className="form-select" id="category">
+          <option value=""></option>
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+          {/* <option value="groceries">Groceries</option>
           <option value="utilities">Utilities</option>
-          <option value="entertainment">Entertainment</option>
+          <option value="entertainment">Entertainment</option> */}
         </select>
-      </div> */}
+      </div>
 
       <button className="btn btn-primary" type="submit">
         Submit
@@ -79,4 +85,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default ExpenseForm;

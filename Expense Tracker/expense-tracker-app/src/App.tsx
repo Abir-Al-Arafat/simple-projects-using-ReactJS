@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Form from "./components/Form";
+import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import ExpenseFilter from "./components/ExpenseFilter";
 // import "./App.css";
@@ -23,11 +23,11 @@ function App() {
     : expenses;
 
   // checking the existence of expenses
-  if (expenses.length === 0) return <Form></Form>;
+  if (expenses.length === 0) return <ExpenseForm></ExpenseForm>;
 
   return (
     <div>
-      <Form></Form>
+      <ExpenseForm></ExpenseForm>
       <ExpenseFilter
         onSelectCategory={(category) => setSelectedCategory(category)}
       />
