@@ -7,13 +7,13 @@ import categories from "./categories";
 function App() {
   // dummy expense list
   const expensesList = [
-    { id: 1, description: "aaa", amount: 10, category: "Groceries" },
-    { id: 2, description: "bbb", amount: 50, category: "Utilities" },
-    { id: 3, description: "ccc", amount: 30, category: "Entertainment" },
-    { id: 4, description: "ddd", amount: 20, category: "Utilities" },
+    { id: 1, description: "Cereals", amount: 10, category: "Groceries" },
+    { id: 2, description: "Cable", amount: 50, category: "Utilities" },
+    { id: 3, description: "Concert", amount: 30, category: "Entertainment" },
+    { id: 4, description: "Internet Bill", amount: 20, category: "Utilities" },
   ];
 
-  // expenses and category
+  // expenses and categories
   const [expenses, setExpenses] = useState(expensesList);
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -23,11 +23,22 @@ function App() {
     : expenses;
 
   // checking the existence of expenses
-  if (expenses.length === 0) return <ExpenseForm></ExpenseForm>;
+  if (expenses.length === 0)
+    return (
+      <ExpenseForm
+        onSubmit={(expense) =>
+          setExpenses([...expenses, { ...expense, id: expenses.length + 1 }])
+        }
+      ></ExpenseForm>
+    );
 
   return (
     <div>
-      <ExpenseForm></ExpenseForm>
+      <ExpenseForm
+        onSubmit={(expense) =>
+          setExpenses([...expenses, { ...expense, id: expenses.length + 1 }])
+        }
+      ></ExpenseForm>
       <ExpenseFilter
         onSelectCategory={(category) => setSelectedCategory(category)}
       />
