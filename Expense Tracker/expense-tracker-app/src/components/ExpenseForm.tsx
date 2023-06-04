@@ -1,6 +1,5 @@
-import { FormEvent, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { categories } from "../categories";
+import categories from "../categories";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -8,24 +7,27 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const schema = z.object({
   description: z
     .string()
-    .min(3, { message: "Description must be at least 3 letters" }),
+    .min(3, { message: "Description must be at least 3 letters" })
+    .max(50),
   amount: z.number({ invalid_type_error: "Amount field is required" }),
+  category: z.enum(categories, {
+    errorMap: () => ({
+      message: "Select a category.",
+    }),
+  }),
 });
 
-// interface FormData {
-//   name: string;
-//   age: number;
-// }
+type ExpenseFormData = z.infer<typeof schema>;
 
 const ExpenseForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(schema) });
+  } = useForm<ExpenseFormData>({ resolver: zodResolver(schema) });
   console.log(errors);
   const onSubmit = (data: FieldValues) => {
-    console.log(data.description, data.amount);
+    console.log(data.description, data.amount, data.category);
   };
 
   return (
@@ -65,7 +67,7 @@ const ExpenseForm = () => {
         <label htmlFor="category" className="form-label">
           Category
         </label>
-        <select className="form-select" id="category">
+        <select {...register("category")} className="form-select" id="category">
           <option value=""></option>
           {categories.map((category) => (
             <option key={category} value={category}>
@@ -76,6 +78,9 @@ const ExpenseForm = () => {
           <option value="utilities">Utilities</option>
           <option value="entertainment">Entertainment</option> */}
         </select>
+        {errors.category && (
+          <p className="text-danger">{errors.category.message}</p>
+        )}
       </div>
 
       <button className="btn btn-primary" type="submit">
