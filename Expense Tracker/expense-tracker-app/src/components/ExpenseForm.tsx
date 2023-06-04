@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import categories from "../categories";
+import categories from "../data/categories";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
