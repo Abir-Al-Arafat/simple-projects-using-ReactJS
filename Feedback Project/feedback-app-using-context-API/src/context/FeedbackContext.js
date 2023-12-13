@@ -97,6 +97,7 @@ export const FeedbackProvider = ({children}) => {
         addFeedback: addFeedback,
         editFeedback: editFeedback,
         updateFeedback: updateFeedback,
+        setFeedbackEdit: setFeedbackEdit
     }}>
         {children}
     </FeedbackContext.Provider>

@@ -6,24 +6,19 @@
       "id": 2
     },
     {
-      "id": 3,
-      "rating": 9,
-      "text": "Feedback item 3 from backend"
+      "text": "adding a new feedback",
+      "rating": 7,
+      "id": 3
     },
     {
-      "text": "adding another feedback",
-      "rating": 5,
+      "text": "a new feedback",
+      "rating": 9,
       "id": 4
     },
     {
-      "text": "new feedback added",
-      "rating": 5,
+      "text": "another feedback",
+      "rating": 3,
       "id": 5
-    },
-    {
-      "text": "new review added",
-      "rating": 8,
-      "id": 6
     }
   ]
 }
