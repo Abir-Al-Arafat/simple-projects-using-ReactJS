@@ -7,8 +7,6 @@ import AboutIconLink from './components/AboutIconLink'
 import AboutPage from './pages/AboutPage'
 import { FeedbackProvider } from './context/FeedbackContext'
 
-// main app component
-
 function App(){
 
     return (
