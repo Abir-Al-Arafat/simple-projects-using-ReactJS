@@ -25,13 +25,17 @@ function FeedbackForm() {
   }, [feedbackEdit]);
 
   useEffect(() => {
-    setText("");
-    setBtnDisabled(true);
-    setFeedbackEdit({
-      item: {},
-      edit: false,
-    });
+    if (feedbackEdit.edit) {
+      setText("");
+      setBtnDisabled(true);
+      setFeedbackEdit({
+        item: {},
+        edit: false,
+      });
+    }
   }, [feedback]);
+
+  console.log(feedbackEdit, "feedbackEdit");
 
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState("");
