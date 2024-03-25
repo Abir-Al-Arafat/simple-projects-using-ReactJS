@@ -15,3 +15,5 @@
 ## Functionality
 
 - CRUD operations on reviews with ratings
+
+Deployed At: https://feedback-app-abir.netlify.app/
